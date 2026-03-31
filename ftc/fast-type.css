@@ -1,0 +1,335 @@
+/*
+  TypeFast Light Challenge — Aesthetic CSS Theme (Purple + Grey)
+  - Modern, glassy UI with animated gradients, soft shadows, and crisp focus rings.
+  - Fully compatible with your provided HTML structure and IDs.
+  - Uses advanced CSS: :focus-visible, accent-color, backdrop-filter, gradient borders,
+    media queries (prefers-reduced-motion), sticky headers, animated progress stripes.
+*/
+
+/* ==========================
+   Base + Theme Variables
+========================== */
+:root {
+    /* Purples */
+    --purple-200: #c4b5fd; /* light */
+    --purple-300: #a78bfa;
+    --purple-400: #9466ff;
+    --purple-500: #8b5cf6; /* accent */
+    --purple-600: #7c3aed;
+    --purple-700: #6d28d9;
+    --purple-800: #5532b3;
+  
+    /* Greys */
+    --grey-50: #f7f7fb;
+    --grey-100: #ededf2;
+    --grey-200: #d8d8e0;
+    --grey-300: #b8b8c6;
+    --grey-400: #9a9aab;
+    --grey-500: #7a7a8b;
+    --grey-600: #5c5c6d;
+    --grey-700: #3e3e4e;
+    --grey-800: #2b2b3a;
+    --grey-900: #1a1a26;
+  
+    /* Core */
+    --bg-base: #0f0d13;       /* deep background */
+    --bg-panel: rgba(255, 255, 255, 0.06); /* glass */
+    --text-1: #eceaf6;        /* main text */
+    --text-2: #bfbad6;        /* secondary */
+    --accent: var(--purple-500);
+    --accent-strong: var(--purple-600);
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+  
+    --radius-2xl: 1.25rem;
+    --radius-xl: 1rem;
+    --radius-lg: 0.75rem;
+    --ring: 2px;
+    --shadow-soft: 0 10px 30px rgba(0,0,0,0.35);
+    --shadow-pop: 0 15px 45px rgba(139, 92, 246, 0.25);
+  }
+  
+  /* Subtle animated gradient backdrop */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(1200px 800px at 10% 20%, rgba(139,92,246,0.18), transparent 60%),
+                radial-gradient(800px 600px at 90% 80%, rgba(148,102,255,0.18), transparent 60%),
+                linear-gradient(120deg, #110f19, #0f0d13 45%, #141129);
+    animation: backdropShift 20s linear infinite;
+  }
+  
+  @keyframes backdropShift {
+    0%   { filter: hue-rotate(0deg) saturate(1); }
+    50%  { filter: hue-rotate(-10deg) saturate(1.05); }
+    100% { filter: hue-rotate(0deg) saturate(1); }
+  }
+  
+  /* Optional grain overlay for depth */
+  body::after {
+    content: "";
+    position: fixed; inset: 0; z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 2px 2px;
+    opacity: 0.08;
+  }
+  
+  /* ==========================
+     Global Resets
+  ========================== */
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    color: var(--text-1);
+    font: 700 19px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: var(--bg-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  ::selection { background: rgba(139,92,246,0.35); color: #fff; }
+  
+  [hidden] { display: none !important; }
+  
+  /* Focus rings */
+  :focus-visible {
+    outline: var(--ring) solid color-mix(in oklab, var(--accent) 75%, white 25%);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+  
+  /* Layout helpers */
+  header, section, main, footer { 
+    max-width: 1000px;
+    margin: clamp(12px, 3vw, 24px) auto;
+    padding: clamp(16px, 2.6vw, 28px);
+    position: relative;
+  }
+  
+  /* Panel (glass) look */
+  #app-header, #setup, #hud, #stage, #history, #app-footer, dialog#result-dialog {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: var(--shadow-soft);
+    margin-left: 470px;
+    margin-top: 30px;
+    margin-bottom: 100px;
+  }
+  
+  /* Gradient border accent */
+  #app-header::before, #setup::before, #hud::before, #stage::before, #history::before, #app-footer::before, dialog#result-dialog::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+    padding: 1px; /* glow thickness */
+    background: linear-gradient(135deg, rgba(139,92,246,0.7), rgba(148,102,255,0.35), rgba(255,255,255,0.08));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+  }
+  
+  /* ==========================
+     Header
+  ========================== */
+  #app-header h1 {
+    margin: 0 0 6px;
+    font-size: clamp(35px, 3.4vw, 44px);
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, var(--purple-300), #fff 40%, var(--purple-400));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  #app-header #tagline { color: var(--text-2); margin: 6px 0 0; }
+  
+  /* ==========================
+     Setup form
+  ========================== */
+  #setup form { display: grid; gap: 18px; }
+  #setup fieldset {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-xl);
+    padding: 12px 14px;
+  }
+  #setup legend { color: var(--purple-200); font-weight: 600; }
+  #setup label { margin-right: 16px; color: var(--text-2); }
+  #setup input[type="radio"], #setup input[type="checkbox"] { accent-color: var(--accent); }
+  
+  #round-config, #word-source-config {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; align-items: center;
+  }
+  #round-config input, #word-source-config select, #word-source-config textarea {
+    width: 100%;
+    color: var(--text-1);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius-lg);
+    padding: 10px 12px;
+  }
+  #word-source-config textarea { min-height: 86px; resize: vertical; }
+  
+  /* Primary controls */
+  #primary-controls { display: flex; flex-wrap: wrap; gap: 10px; }
+  #primary-controls button {
+    --btn-bg: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+    --btn-shadow: 0 10px 25px rgba(139,92,246,0.35);
+    color: #fff; border: 0; border-radius: 999px; padding: 10px 16px;
+    background: var(--btn-bg);
+    box-shadow: var(--btn-shadow);
+    transform: translateY(0);
+    transition: transform .12s ease, filter .2s ease, box-shadow .2s ease;
+  }
+  #primary-controls button:hover { filter: brightness(1.07); box-shadow: 0 12px 30px rgba(139,92,246,0.45); }
+  #primary-controls button:active { transform: translateY(1px) scale(0.98); }
+  #primary-controls button:disabled { filter: grayscale(0.6) brightness(0.7); opacity: 0.6; cursor: not-allowed; }
+  
+  /* ==========================
+     HUD
+  ========================== */
+  #hud { display: grid; gap: 14px; }
+  #timer { font-weight: 700; }
+  #scoreboard { display: flex; flex-wrap: wrap; gap: 14px; color: var(--text-2); }
+  #scoreboard strong { color: #fff; }
+  
+  /* Progress bar */
+  #progress {
+    position: relative; height: 10px; border-radius: 999px; overflow: hidden;
+    background: rgba(255,255,255,0.08);
+  }
+  #progress::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, var(--purple-700), var(--purple-500));
+    transform-origin: left center;
+    width: var(--_pct, 0%);
+  }
+  /* Stripe animation layer */
+  #progress::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.18) 0 8px, transparent 8px 16px);
+    mix-blend-mode: overlay; opacity: 0.65;
+    animation: stripeMove 1.2s linear infinite;
+  }
+  @keyframes stripeMove { to { background-position: 40px 0; } }
+  
+  /* JS updates this width; we also mirror via style.width for broad support */
+  #progress { --_pct: 0%; }
+  
+  /* ==========================
+     Stage (prompt + input)
+  ========================== */
+  #stage { display: grid; gap: 14px; }
+  #prompt { font-size: clamp(18px, 2.2vw, 22px); color: var(--purple-200); }
+  #prompt-text {
+    display: inline-block; padding: 6px 10px; border-radius: 10px;
+    background: rgba(139,92,246,0.12);
+    border: 1px solid rgba(139,92,246,0.25);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  
+  #input-wrap label { display: block; margin-bottom: 6px; color: var(--text-2); }
+  #typing-input {
+    width: 100%; font-size: clamp(16px, 2.2vw, 18px);
+    color: var(--text-1);
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius-xl);
+    padding: 14px 16px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), var(--shadow-soft);
+    transition: box-shadow .2s ease, border-color .2s ease;
+  }
+  #typing-input:focus-visible {
+    border-color: color-mix(in oklab, var(--accent) 70%, white 30%);
+    box-shadow: 0 0 0 6px rgba(139,92,246,0.15), var(--shadow-pop);
+  }
+  #typing-input:disabled { opacity: 0.6; filter: grayscale(0.3); cursor: not-allowed; }
+  
+  #feedback { min-height: 22px; font-weight: 700; letter-spacing: .5px; }
+  #feedback:empty::before { content: ""; }
+  #feedback:contains("✓") { color: var(--success); }
+  #feedback:contains("✗") { color: var(--danger); }
+  
+  /* ==========================
+     Result dialog
+  ========================== */
+  dialog#result-dialog {
+    max-width: 720px; width: 92vw; color: var(--text-1);
+  }
+  dialog#result-dialog::backdrop { backdrop-filter: blur(6px); background: rgba(10, 8, 14, 0.6); }
+  #result-dialog header h2 { margin-top: 0; font-size: clamp(22px, 2.8vw, 28px); }
+  #result-summary p { margin: 8px 0; color: var(--text-2); }
+  #result-figure { display: grid; place-items: center; margin: 12px 0; }
+  #result-image { max-width: min(320px, 60vw); border-radius: var(--radius-lg); box-shadow: var(--shadow-pop); }
+  #result-caption { color: var(--purple-200); text-align: center; margin-top: 6px; }
+  
+  /* Dialog buttons */
+  dialog menu { display: flex; gap: 10px; justify-content: flex-end; padding: 0; margin-top: 10px; }
+  dialog button {
+    --btn-bg: linear-gradient(135deg, var(--purple-700), var(--purple-500));
+    color: #fff; border: 0; border-radius: 999px; padding: 10px 16px; background: var(--btn-bg);
+    box-shadow: 0 8px 22px rgba(139,92,246,0.35);
+  }
+  dialog button:hover { filter: brightness(1.07); }
+  dialog button:active { transform: translateY(1px) scale(0.98); }
+  
+  /* ==========================
+     History table
+  ========================== */
+  #history h2 { margin-top: 0; }
+  #history-table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: var(--radius-xl); }
+  #history-table thead th {
+    position: sticky; top: 0; z-index: 1; text-align: left; font-weight: 700;
+    background: linear-gradient(180deg, rgba(139,92,246,0.3), rgba(139,92,246,0.08)); color: #fff;
+    padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  #history-table tbody td { padding: 10px 12px; color: var(--text-2); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  #history-table tbody tr:hover { background: rgba(139,92,246,0.08); }
+  #history-table tbody tr td.h-rank { color: var(--purple-200); font-weight: 700; }
+  
+  /* ==========================
+     Footer
+  ========================== */
+  #app-footer p { color: var(--text-2); margin: 0; }
+  
+  /* ==========================
+     Fancy extras
+  ========================== */
+  /* Pulsing start button when idle */
+  #btn-start:not(:disabled) { animation: pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(139,92,246,0.45); }
+    50% { box-shadow: 0 0 0 12px rgba(139,92,246,0.0); }
+  }
+  
+  /* Hover lift on panels */
+  #setup:hover, #hud:hover, #stage:hover, #history:hover, #app-header:hover {
+    transform: translateY(-2px);
+    transition: transform .2s ease;
+  }
+  
+  /* Animated gradient text utility */
+  .gradient-text {
+    background: linear-gradient(90deg, var(--purple-200), #fff, var(--purple-400));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    background-size: 200% 200%; animation: shimmer 4s linear infinite;
+  }
+  @keyframes shimmer { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+  
+  /* ==========================
+     Responsive
+  ========================== */
+  @media (max-width: 720px) {
+    #round-config, #word-source-config { grid-template-columns: 1fr; }
+    #scoreboard { gap: 10px; }
+  }
+  
+  /* ==========================
+     Reduced motion support
+  ========================== */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+  
