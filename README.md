@@ -34,8 +34,7 @@ It is built using HTML, CSS, and JavaScript and showcases multiple mini-projects
 ---
 
 ## 🌐 Live Demo
-👉 https://fs-blip-ctrl.github.io/DB5/
-
+ https://fs-blip-ctrl.github.io/MOODIFY/
 ---
 
 ## ▶️ How to Run Locally
@@ -72,5 +71,3 @@ The goal of this project is to create a platform that combines fun and learning 
 - Add score tracking and user progress  
 
 ---
-
-## 🚀 Live Demo
