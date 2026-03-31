@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moodifyy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&family=Poppins:wght@300;500;700&family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="intro.css" />
+  </head>
+  <script>
+    window.addEventListener("scroll", function () {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 10) {
+        navbar.style.boxShadow = "0 0 15px #00d2ff";
+      } else {
+        navbar.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+      }
+    });
+  </script>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <!--  Navigation Bar -->
+      <nav class="navbar">
+        <div class="nav-container">
+          <a href="#" class="logo">🌟 MOODIFYY</a>
+          <ul class="nav-links">
+            <li><a href="#fun">Fun</a></li>
+            <li><a href="#game">Game</a></li>
+            <li><a href="#country">Country</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+      </nav>
+      <h1 class="Welcome">WELCOME TO MOODIFYY</h1>
+      <p class="header-text">
+        <strong
+          >🌈 A place where your emotions meet entertainment. Explore, discover,
+          and uplift your vibe!</strong
+        >
+      </p>
+    </header>
+    <!--  Know Your Country Section -->
+    <section class="section country-section" id="country">
+      <div class="box left-align">
+        <video id="countryVideo" autoplay muted loop playsinline>
+          <source src="country-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div class="text">
+          <h2>Know Your Country</h2>
+          <h3>
+            🎵 Click the flags beside , unlock the jam — your ears deserve this
+            world tour!
+          </h3>
+          <br />
+
+          <h4>
+            🌐 Curious about your country or any other? Dive into cool facts,
+            culture, food and more! Let’s explore the globe together!
+          </h4>
+          <a href="know-your-country.html" class="btn" target="_blank"
+            >Fun Facts</a
+          >
+          <a href="language-snippets.html" class="btn" target="_blank"
+            >Languages</a
+          >
+        </div>
+      </div>
+    </section>
+    <!--  Household Section -->
+    <section class="section mood-section reverse" id="fun">
+      <div class="box left-align">
+        <img src="hh.png" alt="Mood Quiz Image" />
+        <div class="text">
+          <h2>Which Household Item Are You?!</h2>
+          <p class="hh-text">
+            🧠 Take a short, fun quiz to discover how you're feeling today. Are
+            you joyful, calm, curious, or a little wild? Let’s find out!
+          </p>
+          <a href="household.html" class="btn" target="_blank">Let's Go!</a>
+        </div>
+      </div>
+    </section>
+    <!--  Wanna Play a Game Section -->
+    <section class="section game-section" id="game">
+      <div class="box left-align">
+        <img src="game.jpeg" alt="Game Image" />
+        <div class="text">
+          <h2>Wanna Play a Game?</h2>
+          <p class="g-text">
+            🤖 Challenge your mind with a quick round of Rock Paper Scissors.
+            It’s fun, fast, and a great mood lifter!
+          </p>
+          <a href="12-rock-paper-scissors.html" class="btn" target="_blank"
+            >✊ROCK ✋PAPER ✌️SCISSORS</a
+          >
+          <a href="fast-type.html" class="btn" target="_blank"
+            >🔥FAST TYPE CHALLENGE
+          </a>
+        </div>
+      </div>
+    </section>
+    <!--  About Me Section -->
+    <section class="section about-section reverse" id="about">
+      <div class="box left-align">
+        <img src="abt.jpeg" alt="Creator image" />
+        <div class="text">
+          <h2 style="color: rgb(250, 141, 159)">About Me</h2>
+          <h4 class="abt-text">
+            Once upon a time, a perfectly sane human (yepp, that’s me —>
+            <i>FATIMAH SALIM SIDDIQUI</i> ) decided to make the internet a
+            happier place. MOODIFYY was born from a noble idea: sprinkle joy
+            into people’s lives.<br />
+            <br />Then reality hit — I spent hours arguing with HTML like it was
+            a stubborn toddler, CSS refused to cooperate like a diva actor, and
+            JavaScript… well, JavaScript just sat there throwing errors like
+            confetti 🎉. There were late-night caffeine sessions, dramatic
+            sighs, and at least three moments where I considered yeeting my
+            laptop out the window. <br /><br />But here it is — MOODIFYY, alive
+            and running, so please enjoy it… or if you don’t, please send your
+            complaints to my non-existent customer care department 🙃.<br />Your
+            Welcome!🌱
+          </h4>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener(
+        "click",
+        function () {
+          const vid = document.getElementById("countryVideo");
+          vid.muted = false;
+          vid.play();
+        },
+        { once: true }
+      );
+
+      const countryVideo = document.getElementById("countryVideo");
+
+      // Ensure video starts muted
+      countryVideo.muted = true;
+
+      // When clicked directly on the video
+      countryVideo.addEventListener("click", () => {
+        if (countryVideo.muted) {
+          countryVideo.muted = false;
+          countryVideo.play();
+        } else {
+          countryVideo.muted = true;
+        }
+      });
+
+      // Prevent clicks elsewhere from triggering sound
+      document.addEventListener("click", (e) => {
+        if (e.target !== countryVideo) {
+          countryVideo.muted = true;
+        }
+      });
+    </script>
+
+    <footer class="footer">
+      <p>✨ <strong>MOODIFYY</strong> — your dose of style & fun! ✨</p>
+      <p>💡 Created with 💪 by <strong>FATIMAH</strong></p>
+      <p>🌐 Explore • 🎨 Create • 🚀 Enjoy</p>
+    </footer>
+  </body>
+</html>

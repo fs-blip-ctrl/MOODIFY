@@ -1,0 +1,238 @@
+/* Base styling */
+.language-page  {
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    color: #333;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Title styling */
+.language-page h1 {
+    font-size: 2.9rem;
+    text-align: center;
+    color: #6c63ff;
+    text-shadow: 0 0 8px rgba(108, 99, 255, 0.4);
+    font-family: 'Monoton', cursive;
+}
+
+.language-page p {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #555;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.para {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    MARGIN-LEFT: 140PX;
+    text-align: center;
+    color: #684b4b;
+    font-weight: 900;
+    text-shadow: 0 0 6px rgba(255, 200, 200, 0.6);
+}
+
+/* Card container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 150px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: center;
+}
+
+/* Card base */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    text-align: center;
+    color: #333;
+    transition: transform 0.3s ease;
+    height: 200px;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Front face */
+.card-front {
+    background: linear-gradient(135deg, #c8f748, #fcb69f);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card-front img {
+    width: 120px;
+    height: 70px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.card-front h3 {
+    font-size: 1.9rem;
+    color: #917bf5;
+}
+
+/* Back face */
+.card-back {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+      width: 90%;
+      height: 280px;
+    }
+}
+
+
+/* 🌈 Fancy animated pastel background */
+.language-page  {
+    background: linear-gradient(135deg, #ffd6e0, #ffeeba, #d4f1f9, #d6f6ff, #ffe3e3);
+    background-size: 500% 500%;
+    animation: rainbowPastel 2s ease infinite;
+}
+
+@keyframes rainbowPastel {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.audio-btn {
+    background-color: #ffccff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .audio-btn:hover {
+    background-color: #ff99cc;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+    transform: scale(1.05);
+  }
+  
+  /* 🎯 Audio Button Styling */
+.audio-btn {
+    background: linear-gradient(45deg, #ffb3c6, #b3d9ff, #baffc9);
+    background-size: 300% 300%;
+    animation: gradientShift 5s ease infinite;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+    transition: all 0.3s ease;
+  }
+  
+  .audio-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+  }
+  
+  .audio-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 35px rgba(255, 105, 180, 1);
+  }
+  
+  /* 🎨 Background Gradient Animation */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* 🌈 Website Background */
+  .language-page  {
+    background: linear-gradient(120deg, rgb(230, 165, 230), #fccb90, #da86b7, #96e6a1, #b3d9ff, #ffb3c6);
+    background-size: 400% 400%;
+    animation: gradientShift 9s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 💎 Card Glow on Hover */
+  .card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05) rotateY(5deg);
+    box-shadow: 0 15px 40px rgba(255, 182, 193, 0.6), 0 0 25px rgba(179, 217, 255, 0.7);
+  }
+  
+  /* ✨ Back of Card Styling */
+  .card-back {
+    background: linear-gradient(135deg, #ffe6f0, #e6faff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 15px;
+  }
+  
+
+.heading1{
+  margin-left: 300px;
+}

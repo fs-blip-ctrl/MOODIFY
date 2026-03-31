@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors</title>
+     <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&family=Poppins:wght@300;500;700&family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="rps/12-rock-paper-scissors.css" />
+    <link rel="stylesheet" href="layout.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <div class="full">
+      <p class="title">Rock Paper Scissors</p>
+
+      <p class="subtitle">"Choose wisely, warrior of the neon realm."</p>
+
+      <div class="emoji-reaction">😐 🤖 😎 🎮 💥 🕹️ 🧠 ✊ ✋ ✌️</div>
+
+      <details class="rules">
+        <summary>🎮 How to Play</summary>
+        <p>Click one of the buttons: Rock 🪨, Paper 📄, or Scissors ✂️.</p>
+        <p>The computer will choose one too. May luck be with you!</p>
+      </details>
+
+      <button class="move-button js-rock-button">
+        <img src="rps/rock-emoji.png" class="move-icon" />
+      </button>
+
+      <button class="move-button js-paper-button">
+        <img src="rps/paper-emoji.png" class="move-icon" />
+      </button>
+
+      <button class="move-button js-scissors-button">
+        <img src="rps/scissors-emoji.png" class="move-icon" />
+      </button>
+
+      <p class="js-result result"></p>
+      <p class="js-moves"></p>
+      <p class="js-score score"></p>
+
+      <button
+        onclick="
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+      localStorage.removeItem('score');
+      updateScoreElement();
+    "
+        class="reset-score-button js-reset-score-button"
+      >
+        Reset Score
+      </button>
+
+      <button
+        class="auto-play-button"
+        onclick="
+      autoPlay();
+    "
+      >
+        Auto Play
+      </button>
+
+      <div id="footer"></div>
+
+      <script src="rps/12-rock-paper-scissors.js"></script>
+    </div>
+
+    <script src="layout.js"></script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Which Household Item Are You?</title>
+ <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&family=Poppins:wght@300;500;700&family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+  <link rel="stylesheet" href="household.css">
+  <link rel="stylesheet" href="layout.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="header"></div>
+
+  <div class="quiz-container">
+    <h1>🧺 Which Household Item Are You?</h1>
+    <p class="subtitle">Find out your cozy alter ego 🛋️✨</p>
+
+    <!-- Question Display Area -->
+    <div id="question-box">
+      <p id="question-text">Loading question...</p>
+
+      <div class="options">
+        <button class="option-btn" onclick="selectOption(0)"></button>
+        <button class="option-btn" onclick="selectOption(1)"></button>
+        <button class="option-btn" onclick="selectOption(2)"></button>
+        <button class="option-btn" onclick="selectOption(3)"></button>
+      </div>
+    </div>
+
+    <!-- Next Button -->
+    <button id="next-btn" onclick="nextQuestion()" style="color:rgb(255, 255, 255);">Next ➡️</button>
+
+    <!-- Final Result Display -->
+    <div id="result-box" style="display: none;">
+      <h2>Your Inner Household Item Is...</h2>
+      <p id="result-text" style=" font-size: 30px; color: rgb(156, 37, 37);"></p>
+      <button onclick="restartQuiz()">Try Again 🔄</button>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="household.js"></script>
+  <script src="layout.js"></script>
+
+  
+</body>
+</html>
