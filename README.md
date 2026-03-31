@@ -1,7 +1,7 @@
-# 🚀 MODIFY – Interactive Learning & Fun Platform
+# 🚀 MOODIFY – Interactive Learning & Fun Platform
 
 ## 📌 Description
-MODIFY is an interactive web platform that combines learning and entertainment through quizzes, games, and engaging UI experiences.  
+MOODIFY is an interactive web platform that combines learning and entertainment through quizzes, games, and engaging UI experiences.  
 It is built using HTML, CSS, and JavaScript and showcases multiple mini-projects integrated into a single application.
 
 ---
